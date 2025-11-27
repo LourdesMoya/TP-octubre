@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Asistencia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Sistema de Asistencia</h2>
+
+    <div class="controls">
+        <label>Curso:</label>
+        <select id="curso" onchange="cargarMaterias(event)" class="cursos" name="curso">
+            <option value="1">4º3</option>
+            <option value="2">4º4</option>
+        </select>
+        <label>Materia:</label>
+        <select id="materias" onchange="cargarlista(event)" name="materia">
+            <option value="Algoritmos">Algoritmos</option>
+            <option value="Base de datos">Base de Datos</option>
+            <option value="Proyecto informático">Proyecto Informático</option>
+            <option value="Lógica">Lógica</option>
+            <option value="Matemáticas">Matemáticas</option>
+            <option value="Historia">Historia</option>
+            <option value="Organización">Organización</option>
+            <option value="Lengua">Lengua</option>
+            <option value="Inglés">Inglés</option>
+        </select>
+        <label>Fecha:</label>
+        <input type="date" id="fecha">
+    </div>
+
+    <form onsubmit="cargarAlumnos(event)">
+        <label for="listaAlumnos">Lista de Alumnos (Nombre Apellido por línea):</label>
+        <textarea id="listaAlumnos" name="lista" rows="8" cols="40"></textarea>
+        <input type="submit" value="Cargar Alumnos">
+    </form>
+
+    <h3>Alumnos</h3>
+    <table id="tablaAlumnos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Uriel</td>
+                <td>Albina</td>
+                <td>
+                    <button onclick="marcar(1, 'P')">P</button>
+                    <button onclick="marcar(1, 'A')">A</button>
+                    <button onclick="marcar(1, 'T')">T</button>
+                    <button onclick="marcar(1, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-1"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Alvarez</td>
+                <td>Ariel</td>
+                <td>
+                    <button onclick="marcar(2, 'P')">P</button>
+                    <button onclick="marcar(2, 'A')">A</button>
+                    <button onclick="marcar(2, 'T')">T</button>
+                    <button onclick="marcar(2, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Apaza</td>
+                <td>Leonel</td>
+                <td>
+                    <button onclick="marcar(3, 'P')">P</button>
+                    <button onclick="marcar(3, 'A')">A</button>
+                    <button onclick="marcar(3, 'T')">T</button>
+                    <button onclick="marcar(3, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Benavides</td>
+                <td>Katherine</td>
+                <td>
+                    <button onclick="marcar(4, 'P')">P</button>
+                    <button onclick="marcar(4, 'A')">A</button>
+                    <button onclick="marcar(4, 'T')">T</button>
+                    <button onclick="marcar(4, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-4"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Brem</td>
+                <td>Lucas</td>
+                <td>
+                    <button onclick="marcar(5, 'P')">P</button>
+                    <button onclick="marcar(5, 'A')">A</button>
+                    <button onclick="marcar(5, 'T')">T</button>
+                    <button onclick="marcar(5, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-5"></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Cornejo</td>
+                <td>Erik</td>
+                <td>
+                    <button onclick="marcar(6, 'P')">P</button>
+                    <button onclick="marcar(6, 'A')">A</button>
+                    <button onclick="marcar(6, 'T')">T</button>
+                    <button onclick="marcar(6, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-6"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Estanga</td>
+                <td>Luna</td>
+                <td>
+                    <button onclick="marcar(7, 'P')">P</button>
+                    <button onclick="marcar(7, 'A')">A</button>
+                    <button onclick="marcar(7, 'T')">T</button>
+                    <button onclick="marcar(7, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-7"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Flores</td>
+                <td>Kevin</td>
+                <td>
+                    <button onclick="marcar(8, 'P')">P</button>
+                    <button onclick="marcar(8, 'A')">A</button>
+                    <button onclick="marcar(8, 'T')">T</button>
+                    <button onclick="marcar(8, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-8"></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Gómez</td>
+                <td>Aurea</td>
+                <td>
+                    <button onclick="marcar(9, 'P')">P</button>
+                    <button onclick="marcar(9, 'A')">A</button>
+                    <button onclick="marcar(9, 'T')">T</button>
+                    <button onclick="marcar(9, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-9"></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Gutiérrez</td>
+                <td>Ian</td>
+                <td>
+                    <button onclick="marcar(10, 'P')">P</button>
+                    <button onclick="marcar(10, 'A')">A</button>
+                    <button onclick="marcar(10, 'T')">T</button>
+                    <button onclick="marcar(10, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-10"></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Huala</td>
+                <td>Lucas</td>
+                <td>
+                    <button onclick="marcar(11, 'P')">P</button>
+                    <button onclick="marcar(11, 'A')">A</button>
+                    <button onclick="marcar(11, 'T')">T</button>
+                    <button onclick="marcar(11, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-11"></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Hurtado</td>
+                <td>Aramis</td>
+                <td>
+                    <button onclick="marcar(12, 'P')">P</button>
+                    <button onclick="marcar(12, 'A')">A</button>
+                    <button onclick="marcar(12, 'T')">T</button>
+                    <button onclick="marcar(12, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-12"></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Iacovone</td>
+                <td>Max</td>
+                <td>
+                    <button onclick="marcar(13, 'P')">P</button>
+                    <button onclick="marcar(13, 'A')">A</button>
+                    <button onclick="marcar(13, 'T')">T</button>
+                    <button onclick="marcar(13, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-13"></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Kamien</td>
+                <td>Agustín</td>
+                <td>
+                    <button onclick="marcar(14, 'P')">P</button>
+                    <button onclick="marcar(14, 'A')">A</button>
+                    <button onclick="marcar(14, 'T')">T</button>
+                    <button onclick="marcar(14, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-14"></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>López</td>
+                <td>Joshua</td>
+                <td>
+                    <button onclick="marcar(15, 'P')">P</button>
+                    <button onclick="marcar(15, 'A')">A</button>
+                    <button onclick="marcar(15, 'T')">T</button>
+                    <button onclick="marcar(15, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-15"></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Maddonni</td>
+                <td>Marcos</td>
+                <td>
+                    <button onclick="marcar(16, 'P')">P</button>
+                    <button onclick="marcar(16, 'A')">A</button>
+                    <button onclick="marcar(16, 'T')">T</button>
+                    <button onclick="marcar(16, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-16"></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Molina</td>
+                <td>Nazir</td>
+                <td>
+                    <button onclick="marcar(17, 'P')">P</button>
+                    <button onclick="marcar(17, 'A')">A</button>
+                    <button onclick="marcar(17, 'T')">T</button>
+                    <button onclick="marcar(17, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-17"></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Moya</td>
+                <td>Lourdes</td>
+                <td>
+                    <button onclick="marcar(18, 'P')">P</button>
+                    <button onclick="marcar(18, 'A')">A</button>
+                    <button onclick="marcar(18, 'T')">T</button>
+                    <button onclick="marcar(18, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-18"></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Rodríguez</td>
+                <td>Ignacio</td>
+                <td>
+                    <button onclick="marcar(19, 'P')">P</button>
+                    <button onclick="marcar(19, 'A')">A</button>
+                    <button onclick="marcar(19, 'T')">T</button>
+                    <button onclick="marcar(19, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-19"></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Segovia</td>
+                <td>Camila</td>
+                <td>
+                    <button onclick="marcar(20, 'P')">P</button>
+                    <button onclick="marcar(20, 'A')">A</button>
+                    <button onclick="marcar(20, 'T')">T</button>
+                    <button onclick="marcar(20, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-20"></td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Vattino</td>
+                <td>Facundo</td>
+                <td>
+                    <button onclick="marcar(21, 'P')">P</button>
+                    <button onclick="marcar(21, 'A')">A</button>
+                    <button onclick="marcar(21, 'T')">T</button>
+                    <button onclick="marcar(21, 'R')">R</button>
+                </td>
+                <td><input type="time" id="hora-21"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Registro del día</h3>
+    <table id="tablaRegistro">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Ingreso</th>
+                <th>Egreso</th>
+            </tr>
+        </thead>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
